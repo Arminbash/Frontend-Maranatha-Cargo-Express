@@ -118,8 +118,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\BundleConfig2.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -475,6 +477,11 @@
     <Content Include="assets\js\pages\widgets.min.js" />
     <Content Include="assets\js\scripts.bundle.js" />
     <Content Include="assets\js\scripts.bundle.min.js" />
+    <Content Include="assets\Logos\1.png" />
+    <Content Include="assets\Logos\2.png" />
+    <Content Include="assets\Logos\3.png" />
+    <Content Include="assets\Logos\4.png" />
+    <Content Include="assets\Logos\5.png" />
     <Content Include="assets\media\bg\300.jpg" />
     <Content Include="assets\media\bg\350.jpg" />
     <Content Include="assets\media\bg\400.jpg" />
@@ -2347,9 +2354,14 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Layouts\_MainLayout.cshtml" />
+    <Content Include="Views\Shared\Navbars\_EmployeeNavbar.cshtml" />
+    <Content Include="Views\Shared\Layouts\_EmployeeMainLayout.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Shared\Navbars\_EmployeeMobileNavbar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -2364,6 +2376,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MaranathaCargoExpress.Service\MaranathaCargoExpress.Service.csproj">
+      <Project>{76a432d8-97f2-45aa-a5bb-d22b8d4f445e}</Project>
+      <Name>MaranathaCargoExpress.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
