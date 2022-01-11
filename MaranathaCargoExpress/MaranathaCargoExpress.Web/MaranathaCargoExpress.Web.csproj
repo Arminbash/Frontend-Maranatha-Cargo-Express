@@ -187,6 +187,7 @@
     <Content Include="assets\css\pages\wizard\wizard-6.min.css" />
     <Content Include="assets\css\style.bundle.css" />
     <Content Include="assets\css\style.bundle.min.css" />
+    <Content Include="assets\css\searchcode.css" />
     <Content Include="assets\js\pages\crud\datatables\advanced\column-rendering.js" />
     <Content Include="assets\js\pages\crud\datatables\advanced\column-rendering.min.js" />
     <Content Include="assets\js\pages\crud\datatables\advanced\column-visibility.js" />
@@ -495,6 +496,7 @@
     <Content Include="assets\media\bg\demo-7.jpg" />
     <Content Include="assets\media\bg\demo4-bg-footer.jpg" />
     <Content Include="assets\media\bg\home-2-bg.svg" />
+    <Content Include="assets\media\bg\landing.jpg" />
     <Content Include="assets\media\bg\sc-home1-bg.png" />
     <Content Include="assets\media\books\1.png" />
     <Content Include="assets\media\books\10.png" />
@@ -1790,6 +1792,8 @@
     <Content Include="assets\media\svg\illustrations\login-visual-6.svg" />
     <Content Include="assets\media\svg\illustrations\progress.svg" />
     <Content Include="assets\media\svg\illustrations\working.svg" />
+    <Content Include="assets\media\svg\landing\landing.svg" />
+    <Content Include="assets\media\svg\landing\prueba.svg" />
     <Content Include="assets\media\svg\logos\adidas-9.svg" />
     <Content Include="assets\media\svg\logos\adidas.svg" />
     <Content Include="assets\media\svg\logos\airbnb-2.svg" />
@@ -2347,6 +2351,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Layouts\_MainLayout.cshtml" />
+    <Content Include="Views\Home\MainClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

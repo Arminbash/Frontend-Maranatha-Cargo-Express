@@ -26,5 +26,9 @@ namespace MaranathaCargoExpress.Web.Controllers
 
             return View();
         }
+        public ActionResult MainClient()
+        {
+            return View();
+        }
     }
 }
