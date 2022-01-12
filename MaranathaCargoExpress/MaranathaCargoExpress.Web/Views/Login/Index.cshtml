@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/Layouts/_LoginLayout.cshtml";
+}
+<div class="d-flex flex-column flex-root">
+    <div class="login login-4 login-signin-on d-flex flex-row-fluid" id="kt_login">
+        <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-image: url('../../assets/media/bg/bg-3.jpg');">
+            <div class="login-form text-center p-7 position-relative overflow-hidden">
+                <div class="d-flex flex-center mb-15">
+                    <a href="#">
+                        <img src="~/assets/Logos/5.png" class="max-h-75px" alt="" />
+                    </a>
+                </div>
+                <div class="login-signin">
+                    <div class="mb-20">
+                        <h3>Maranatha Cargo Express</h3>
+                    </div>
+                    <form class="form" id="kt_login_signin_form">
+                        <div class="form-group mb-5">
+                            <input class="form-control h-auto form-control-solid py-4 px-8" type="text" placeholder="Email" name="username" autocomplete="off" />
+                        </div>
+                        <div class="form-group mb-5">
+                            <input class="form-control h-auto form-control-solid py-4 px-8" type="password" placeholder="Password" name="password" />
+                        </div>
+                        <div class="form-group d-flex flex-wrap justify-content-between align-items-center">
+                            <div class="checkbox-inline">
+                                <label class="checkbox m-0 text-muted">
+                                    <input type="checkbox" name="remember" />
+                                    <span></span>Recordarme
+                                </label>
+                            </div>
+                            <a href="javascript:;" id="kt_login_forgot" class="text-muted text-hover-primary">Olvide mi contraseña?</a>
+                        </div>
+                        <button id="kt_login_signin_submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">Ingresar</button>
+                    </form>
+                    <div class="mt-10">
+                        <span class="opacity-70 mr-4">Aún no tienes una cuenta?</span>
+                        <a href="javascript:;" id="kt_login_signup" class="text-muted text-hover-primary font-weight-bold">Inscribete ahora!</a>
+                    </div>
+                </div>
+                <div class="login-signup">
+                    <div class="mb-20">
+                        <h3>Maranatha Cargo Express</h3>
+                    </div>
+                    <form class="form" id="kt_login_signup_form">
+                        <div class="form-group mb-5">
+                            <input class="form-control h-auto form-control-solid py-4 px-8" type="text" placeholder="Fullname" name="fullname" />
+                        </div>
+                        <div class="form-group mb-5">
+                            <input class="form-control h-auto form-control-solid py-4 px-8" type="text" placeholder="Email" name="email" autocomplete="off" />
+                        </div>
+                        <div class="form-group mb-5">
+                            <input class="form-control h-auto form-control-solid py-4 px-8" type="password" placeholder="Password" name="password" />
+                        </div>
+                        <div class="form-group mb-5">
+                            <input class="form-control h-auto form-control-solid py-4 px-8" type="password" placeholder="Confirm Password" name="cpassword" />
+                        </div>
+                        <div class="form-group mb-5 text-left">
+                            <div class="checkbox-inline">
+                                <label class="checkbox m-0">
+                                    <input type="checkbox" name="agree" />
+                                    <span></span>Acepto los terminos y condiciones.
+                                </label>
+                            </div>
+                            <div class="form-text text-muted text-center"></div>
+                        </div>
+                        <div class="form-group d-flex flex-wrap flex-center mt-10">
+                            <button id="kt_login_signup_submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">Ingresar</button>
+                            <button id="kt_login_signup_cancel" class="btn btn-light-primary font-weight-bold px-9 py-4 my-3 mx-2">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="login-forgot">
+                    <div class="mb-20">
+                        <h3>Olvide mi contraseña ?</h3>
+                        <div class="text-muted font-weight-bold">Ingrese su correo para reiniciar su contraseña</div>
+                    </div>
+                    <form class="form" id="kt_login_forgot_form">
+                        <div class="form-group mb-10">
+                            <input class="form-control form-control-solid h-auto py-4 px-8" type="text" placeholder="Email" name="email" autocomplete="off" />
+                        </div>
+                        <div class="form-group d-flex flex-wrap flex-center mt-10">
+                            <button id="kt_login_forgot_submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">Enviar</button>
+                            <button id="kt_login_forgot_cancel" class="btn btn-light-primary font-weight-bold px-9 py-4 my-3 mx-2">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -28,14 +28,14 @@ var KTLogin = function() {
 					username: {
 						validators: {
 							notEmpty: {
-								message: 'Username is required'
+								message: 'Correo es requerido'
 							}
 						}
 					},
 					password: {
 						validators: {
 							notEmpty: {
-								message: 'Password is required'
+								message: 'Password es requerida'
 							}
 						}
 					}
@@ -55,10 +55,10 @@ var KTLogin = function() {
             validation.validate().then(function(status) {
 		        if (status == 'Valid') {
                     swal.fire({
-		                text: "All is cool! Now you submit this form",
+                        text: "¡Todo es genial! Ahora envia este formulario",
 		                icon: "success",
 		                buttonsStyling: false,
-		                confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Entiendo!",
                         customClass: {
     						confirmButton: "btn font-weight-bold btn-light-primary"
     					}
@@ -67,10 +67,10 @@ var KTLogin = function() {
 					});
 				} else {
 					swal.fire({
-		                text: "Sorry, looks like there are some errors detected, please try again.",
+                        text: "Lo sentimos, parece que se han detectado algunos errores, intentalo de nuevo.",
 		                icon: "error",
 		                buttonsStyling: false,
-		                confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Entiendo!",
                         customClass: {
     						confirmButton: "btn font-weight-bold btn-light-primary"
     					}
@@ -106,44 +106,44 @@ var KTLogin = function() {
 					fullname: {
 						validators: {
 							notEmpty: {
-								message: 'Username is required'
+                                message: 'Se requiere nombre de usuario'
 							}
 						}
 					},
 					email: {
                         validators: {
 							notEmpty: {
-								message: 'Email address is required'
+                                message: 'Se requiere Direccion de correo electronico'
 							},
                             emailAddress: {
-								message: 'The value is not a valid email address'
+                                message: 'El valor no es una direccion de correo electronico valida'
 							}
 						}
 					},
                     password: {
                         validators: {
                             notEmpty: {
-                                message: 'The password is required'
+                                message: 'La password es requerida'
                             }
                         }
                     },
                     cpassword: {
                         validators: {
                             notEmpty: {
-                                message: 'The password confirmation is required'
+                                message: 'Se requiere la confirmacion de la password.'
                             },
                             identical: {
                                 compare: function() {
                                     return form.querySelector('[name="password"]').value;
                                 },
-                                message: 'The password and its confirm are not the same'
+                                message: 'La password y su confirmacion no son lo mismo.'
                             }
                         }
                     },
                     agree: {
                         validators: {
                             notEmpty: {
-                                message: 'You must accept the terms and conditions'
+                                message: 'Debe aceptar los Terminos y Condiciones'
                             }
                         }
                     },
@@ -161,10 +161,10 @@ var KTLogin = function() {
             validation.validate().then(function(status) {
 		        if (status == 'Valid') {
                     swal.fire({
-		                text: "All is cool! Now you submit this form",
+                        text: "¡Todo es genial! Ahora envia este formulario",
 		                icon: "success",
 		                buttonsStyling: false,
-		                confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Entiendo!",
                         customClass: {
     						confirmButton: "btn font-weight-bold btn-light-primary"
     					}
@@ -173,10 +173,10 @@ var KTLogin = function() {
 					});
 				} else {
 					swal.fire({
-		                text: "Sorry, looks like there are some errors detected, please try again.",
+                        text: "Lo sentimos, parece que se han detectado algunos errores, intentalo de nuevo.",
 		                icon: "error",
 		                buttonsStyling: false,
-		                confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Entiendo!",
                         customClass: {
     						confirmButton: "btn font-weight-bold btn-light-primary"
     					}
@@ -206,10 +206,10 @@ var KTLogin = function() {
 					email: {
 						validators: {
 							notEmpty: {
-								message: 'Email address is required'
+                                message: 'Se requiere Direccion de correo electronico'
 							},
                             emailAddress: {
-								message: 'The value is not a valid email address'
+                                message: 'El valor no es una direccion de correo electronico valida'
 							}
 						}
 					}
@@ -231,10 +231,10 @@ var KTLogin = function() {
                     KTUtil.scrollTop();
 				} else {
 					swal.fire({
-		                text: "Sorry, looks like there are some errors detected, please try again.",
+                        text: "Lo sentimos, parece que se han detectado algunos errores, intentalo de nuevo.",
 		                icon: "error",
 		                buttonsStyling: false,
-		                confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Entiendo!",
                         customClass: {
     						confirmButton: "btn font-weight-bold btn-light-primary"
     					}
