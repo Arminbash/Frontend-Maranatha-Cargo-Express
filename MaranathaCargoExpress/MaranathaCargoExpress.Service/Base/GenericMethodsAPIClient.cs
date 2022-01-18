@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace MaranathaCargoExpress.Service.Base
 {
-    public class GenericMethodsAPIClient<T> where T : class
+    public static class GenericMethodsAPIClient<T> where T : class
     {
-        public async Task<T> Get(string endPoint)
+        public static async Task<T> Get(string endPoint)
         {
             using (var client = new HttpClient())
             {
@@ -19,8 +22,21 @@ namespace MaranathaCargoExpress.Service.Base
 
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var response = await client.GetAsync(endPoint);
+                var response = client.GetAsync(endPoint).Result;
+                if (response.StatusCode == HttpStatusCode.BadRequest)
+                {
+                    var cuerpo = await response.Content.ReadAsStringAsync();
+                    var erroresDelAPI = APIUtil.ExtraerErroresDelWebAPI(cuerpo);
 
+                    foreach (var campoErrores in erroresDelAPI)
+                    {
+                        Console.WriteLine($"-{campoErrores.Key}");
+                        foreach (var error in campoErrores.Value)
+                        {
+                            Console.WriteLine($"  {error}");
+                        }
+                    }
+                }
                 if (response.IsSuccessStatusCode)
                 {
                     return await response.Content.ReadAsAsync<T>();
@@ -29,7 +45,7 @@ namespace MaranathaCargoExpress.Service.Base
             }
         }
 
-        public async Task<T> GetById(string endPoint, int id)
+        public static async Task<T> GetById(string endPoint, int id)
         {
             using (var client = new HttpClient())
             {
@@ -38,8 +54,21 @@ namespace MaranathaCargoExpress.Service.Base
 
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var response = await client.GetAsync(endPoint+ $"/{id}");
+                var response = client.GetAsync(endPoint + $"/{id}").Result;
+                if (response.StatusCode == HttpStatusCode.BadRequest)
+                {
+                    var cuerpo = await response.Content.ReadAsStringAsync();
+                    var erroresDelAPI = APIUtil.ExtraerErroresDelWebAPI(cuerpo);
 
+                    foreach (var campoErrores in erroresDelAPI)
+                    {
+                        Console.WriteLine($"-{campoErrores.Key}");
+                        foreach (var error in campoErrores.Value)
+                        {
+                            Console.WriteLine($"  {error}");
+                        }
+                    }
+                }
                 if (response.IsSuccessStatusCode)
                 {
                     return await response.Content.ReadAsAsync<T>();
@@ -48,7 +77,7 @@ namespace MaranathaCargoExpress.Service.Base
             }
         }
 
-        public async Task<T> Post(string endPoint,object value)
+        public static async Task<T> Post(string endPoint, object value)
         {
             using (var client = new HttpClient())
             {
@@ -56,8 +85,21 @@ namespace MaranathaCargoExpress.Service.Base
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var response = await client.PostAsJsonAsync(endPoint,value);
+                var response = client.PostAsJsonAsync(endPoint, value).Result;
+                if (response.StatusCode == HttpStatusCode.BadRequest)
+                {
+                    var cuerpo = await response.Content.ReadAsStringAsync();
+                    var erroresDelAPI = APIUtil.ExtraerErroresDelWebAPI(cuerpo);
 
+                    foreach (var campoErrores in erroresDelAPI)
+                    {
+                        Console.WriteLine($"-{campoErrores.Key}");
+                        foreach (var error in campoErrores.Value)
+                        {
+                            Console.WriteLine($"  {error}");
+                        }
+                    }
+                }
                 if (response.IsSuccessStatusCode)
                 {
                     return await response.Content.ReadAsAsync<T>();
@@ -66,7 +108,7 @@ namespace MaranathaCargoExpress.Service.Base
             }
         }
 
-        public async Task<T> Put(string endPoint,int id, object value)
+        public static async Task<T> Put(string endPoint, int id, object value)
         {
             using (var client = new HttpClient())
             {
@@ -74,8 +116,21 @@ namespace MaranathaCargoExpress.Service.Base
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var response = await client.PutAsJsonAsync(endPoint + $"/{id}", value);
+                var response = client.PutAsJsonAsync(endPoint + $"/{id}", value).Result;
+                if (response.StatusCode == HttpStatusCode.BadRequest)
+                {
+                    var cuerpo = await response.Content.ReadAsStringAsync();
+                    var erroresDelAPI = APIUtil.ExtraerErroresDelWebAPI(cuerpo);
 
+                    foreach (var campoErrores in erroresDelAPI)
+                    {
+                        Console.WriteLine($"-{campoErrores.Key}");
+                        foreach (var error in campoErrores.Value)
+                        {
+                            Console.WriteLine($"  {error}");
+                        }
+                    }
+                }
                 if (response.IsSuccessStatusCode)
                 {
                     return await response.Content.ReadAsAsync<T>();
@@ -84,7 +139,7 @@ namespace MaranathaCargoExpress.Service.Base
             }
         }
 
-        public async Task<T> Delete(string endPoint, int id)
+        public static async Task<T> Delete(string endPoint, int id)
         {
             using (var client = new HttpClient())
             {
@@ -92,8 +147,21 @@ namespace MaranathaCargoExpress.Service.Base
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var response = await client.DeleteAsync(endPoint + $"/{id}");
+                var response = client.DeleteAsync(endPoint + $"/{id}").Result;
+                if (response.StatusCode == HttpStatusCode.BadRequest)
+                {
+                    var cuerpo = await response.Content.ReadAsStringAsync();
+                    var erroresDelAPI = APIUtil.ExtraerErroresDelWebAPI(cuerpo);
 
+                    foreach (var campoErrores in erroresDelAPI)
+                    {
+                        Console.WriteLine($"-{campoErrores.Key}");
+                        foreach (var error in campoErrores.Value)
+                        {
+                            Console.WriteLine($"  {error}");
+                        }
+                    }
+                }
                 if (response.IsSuccessStatusCode)
                 {
                     return await response.Content.ReadAsAsync<T>();
@@ -104,3 +172,32 @@ namespace MaranathaCargoExpress.Service.Base
 
     }
 }
+
+//public static async Task<T> Post(string endPoint, object value)
+//{
+//    var jsonSerializerOptions = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
+//    var url = ApiConnection.ApiUrl + endPoint;
+//    using (var client = new HttpClient())
+//    {
+//        var response = client.PostAsJsonAsync(url, value).Result;
+//        if (response.StatusCode == HttpStatusCode.BadRequest)
+//        {
+//            var cuerpo = await response.Content.ReadAsStringAsync();
+//            var erroresDelAPI = APIUtil.ExtraerErroresDelWebAPI(cuerpo);
+
+//            foreach (var campoErrores in erroresDelAPI)
+//            {
+//                Console.WriteLine($"-{campoErrores.Key}");
+//                foreach (var error in campoErrores.Value)
+//                {
+//                    Console.WriteLine($"  {error}");
+//                }
+//            }
+//        }
+//        if (response.IsSuccessStatusCode)
+//        {
+//            return await response.Content.ReadAsAsync<T>();
+//        }
+//        return await Task.FromResult<T>(null);
+//    }
+//}

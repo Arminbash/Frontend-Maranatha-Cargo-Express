@@ -6,29 +6,15 @@ using System.Web.Mvc;
 
 namespace MaranathaCargoExpress.Web.Controllers
 {
-    [Authorize]
-    public class EmployeeController : Controller
+    public class MapsController : Controller
     {
-        // GET: Employee
+        // GET: Maps
         public ActionResult Index()
         {
             ViewBag.EmployeeName = SessionHelper.GetName();
             ViewBag.UserName = SessionHelper.GetUserName();
             ViewBag.Email = SessionHelper.GetEmail();
             return View();
-        }
-
-        public ActionResult CerrarSesion()
-        {
-            try
-            {
-                SessionHelper.DestroyUserSession();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message.ToString());
-            }
-            return RedirectToAction("Index", "Login");
         }
     }
 }

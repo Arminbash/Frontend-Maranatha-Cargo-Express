@@ -13,14 +13,14 @@ namespace MaranathaCargoExpress.Service.Base
 
         public static class EndPoints
         {
-            public static string Cliente = "api/Cliente";
-            public static string Empelado = "api/Empelado";
-            public static string Rol = "api/Rol";
-            public static string Persona = "api/Persona";
-            public static string Traduccion = "api/Traduccion";
-            public static string Usuario = "api/Usuario";
-            public static string TipoCliente = "api/TipoCliente";
-            public static string TipoPersona = "api/TipoPersona";
+            public static string Cliente = "api/Cliente/";
+            public static string Empelado = "api/Empelado/";
+            public static string Rol = "api/Rol/";
+            public static string Persona = "api/Persona/";
+            public static string Traduccion = "api/Traduccion/";
+            public static string Usuario = "api/Usuario/";
+            public static string TipoCliente = "api/TipoCliente/";
+            public static string TipoPersona = "api/TipoPersona/";
         }
     }
 }

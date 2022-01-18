@@ -14,21 +14,8 @@ namespace MaranathaCargoExpress.Service.Service
     {
         public async Task<UsuarioDto> Login(string Email, string Password)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(ApiConnection.ApiUrl);
-                client.DefaultRequestHeaders.Accept.Clear();
-
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                var response = await client.GetAsync(ApiConnection.EndPoints.Usuario);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    return await response.Content.ReadAsAsync<UsuarioDto>();
-                }
-                return await Task.FromResult<UsuarioDto>(null);
-            }
+            var request = await GenericMethodsAPIClient<UsuarioDto>.Post(ApiConnection.EndPoints.Usuario+"login", new { Email = Email, Password = Password });
+            return request;
         } 
     }
 }
