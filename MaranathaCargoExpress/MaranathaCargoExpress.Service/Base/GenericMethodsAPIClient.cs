@@ -13,7 +13,7 @@ namespace MaranathaCargoExpress.Service.Base
 {
     public static class GenericMethodsAPIClient<T> where T : class
     {
-        public static async Task<T> Get(string endPoint)
+        public static async Task<T> Get(string endPoint, string token = null)
         {
             using (var client = new HttpClient())
             {
@@ -21,6 +21,8 @@ namespace MaranathaCargoExpress.Service.Base
                 client.DefaultRequestHeaders.Accept.Clear();
 
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                if (token != null) client.DefaultRequestHeaders.Authorization= new AuthenticationHeaderValue("Bearer", token);
 
                 var response = client.GetAsync(endPoint).Result;
                 if (response.StatusCode == HttpStatusCode.BadRequest)
@@ -45,7 +47,7 @@ namespace MaranathaCargoExpress.Service.Base
             }
         }
 
-        public static async Task<T> GetById(string endPoint, int id)
+        public static async Task<T> GetById(string endPoint, int id,string token = null)
         {
             using (var client = new HttpClient())
             {
@@ -53,6 +55,8 @@ namespace MaranathaCargoExpress.Service.Base
                 client.DefaultRequestHeaders.Accept.Clear();
 
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                if (token != null) client.DefaultRequestHeaders.Authorization= new AuthenticationHeaderValue("Bearer", token);
 
                 var response = client.GetAsync(endPoint + $"/{id}").Result;
                 if (response.StatusCode == HttpStatusCode.BadRequest)
@@ -77,13 +81,15 @@ namespace MaranathaCargoExpress.Service.Base
             }
         }
 
-        public static async Task<T> Post(string endPoint, object value)
+        public static async Task<T> Post(string endPoint, object value,string token = null)
         {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(ApiConnection.ApiUrl);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                if (token != null) client.DefaultRequestHeaders.Authorization= new AuthenticationHeaderValue("Bearer", token);
 
                 var response = client.PostAsJsonAsync(endPoint, value).Result;
                 if (response.StatusCode == HttpStatusCode.BadRequest)
@@ -108,13 +114,15 @@ namespace MaranathaCargoExpress.Service.Base
             }
         }
 
-        public static async Task<T> Put(string endPoint, int id, object value)
+        public static async Task<T> Put(string endPoint, int id, object value, string token = null)
         {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(ApiConnection.ApiUrl);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                if (token != null) client.DefaultRequestHeaders.Authorization= new AuthenticationHeaderValue("Bearer", token);
 
                 var response = client.PutAsJsonAsync(endPoint + $"/{id}", value).Result;
                 if (response.StatusCode == HttpStatusCode.BadRequest)
@@ -139,13 +147,15 @@ namespace MaranathaCargoExpress.Service.Base
             }
         }
 
-        public static async Task<T> Delete(string endPoint, int id)
+        public static async Task<T> Delete(string endPoint, int id, string token = null)
         {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(ApiConnection.ApiUrl);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                if (token != null) client.DefaultRequestHeaders.Authorization= new AuthenticationHeaderValue("Bearer", token);
 
                 var response = client.DeleteAsync(endPoint + $"/{id}").Result;
                 if (response.StatusCode == HttpStatusCode.BadRequest)
