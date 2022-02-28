@@ -9,12 +9,12 @@ namespace MaranathaCargoExpress.Service.Base
     public class ApiConnection
     {
         //Url de la API sin el Swageer
-        public static string ApiUrl = "http://localhost:8080/";
+        public static string ApiUrl = "https://localhost:44371/";
 
         public static class EndPoints
         {
             public static string Cliente = "api/Cliente/";
-            public static string Empelado = "api/Empelado/";
+            public static string Empleado = "api/Empleado/";
             public static string Rol = "api/Rol/";
             public static string Persona = "api/Persona/";
             public static string Traduccion = "api/Traduccion/";
