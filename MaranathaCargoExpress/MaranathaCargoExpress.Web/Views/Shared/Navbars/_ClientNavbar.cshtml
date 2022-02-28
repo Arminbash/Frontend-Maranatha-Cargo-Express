@@ -1,0 +1,76 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="d-flex flex-column flex-root">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a href="@Url.Action("Index", "Employee")" class="mr-10">
+            <img alt="Logo" src="~/assets/Logos/5.png" class="max-h-45px" />
+        </a>
+        <div>
+            <button class="navbar-toggler btn btn-bg-dark" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="nav-icon">
+                    <i class="flaticon2-soft-icons icon-xl text-white"></i>
+                </span>
+            </button>
+            <span class="nav-icon">
+                <a href="@Url.Action("Index", "Login")" class="fas fa-user icon-xl text-white navbar-toggler"></a>
+            </span>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="container-fluid">
+                <ul class="nav nav-light-success nav-pills" id="myTab" role="tablist">
+                    <!--begin::Item-->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link py-4 px-6 active text-white" data-toggle="tab" data-target="#kt_header_tab_1" role="tab">
+                            <span class="nav-icon">
+                                <i class="flaticon2-delivery-package"></i>
+                            </span>
+                            <span class="nav-text">Rastear</span>
+                        </a>
+                    </li>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <li class="nav-item mr-3">
+                        <a href="#" class="nav-link py-4 px-6 text-white" data-toggle="tab" data-target="#kt_header_tab_2" role="tab">
+                            <span class="nav-icon">
+                                <i class="flaticon-home-2"></i>
+                            </span>
+                            <span class="nav-text">Inicio</span>
+                        </a>
+                    </li>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <li class="nav-item mr-3">
+                        <a href="#" class="nav-link py-4 px-6 text-white" data-toggle="tab" data-target="#kt_header_tab_2" role="tab">
+                            <span class="nav-icon">
+                                <i class="flaticon-truck"></i>
+                            </span>
+                            <span class="nav-text">Precios</span>
+                        </a>
+                    </li>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <li class="nav-item mr-3">
+                        <a href="#" class="nav-link py-4 px-6 text-white" data-toggle="tab" data-target="#kt_header_tab_2" role="tab">
+                            <span class="nav-icon">
+                                <i class="flaticon-support"></i>
+                            </span>
+                            <span class="nav-text">Ayuda</span>
+                        </a>
+                    </li>
+                    <!--end::Item-->
+                </ul>
+                <div class="topbar-item d-none d-xl-block">
+                    <div class="d-flex flex-column text-right pr-sm-3">
+                        <a href="@Url.Action("Index", "Login")" class="text-white">
+                            <span class="nav-icon text-white">
+                                <span class="nav-text">Iniciar sesión</span>
+                                <i class="fas fa-user icon-xl text-white"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>

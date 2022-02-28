@@ -3,96 +3,114 @@
     ViewBag.Title = "Main";
     Layout = "~/Views/Shared/Layouts/_MainLayout.cshtml";
 }
+<link href="~/assets/css/searchcode.css" />
 
-<div class="d-flex flex-column flex-root">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <a class="navbar-brand text-white" href="#">Maranatha Cargo Express</a>
-        <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon "></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <ul class="nav nav-light-success nav-pills" id="myTab" role="tablist">
-                    <!--begin::Item-->
-                    <li class="nav-item">
-                        <a href="#" class="nav-link py-4 px-6 active text-white" data-toggle="tab" data-target="#kt_header_tab_1" role="tab">
-                            <span class="nav-icon">
-                                <i class="flaticon-home-2"></i>
-                            </span>
-                            <span class="nav-text">Inicio</span>
-                        </a>
+@Html.Partial("~/Views/Shared/Navbars/_ClientNavbar.cshtml")
 
-                    </li>
-                    <!--end::Item-->
-                    <!--begin::Item-->
-                    <li class="nav-item mr-3">
-                        <a href="#" class="nav-link py-4 px-6 text-white" data-toggle="tab" data-target="#kt_header_tab_2" role="tab">
-                            <span class="nav-icon">
-                                <i class="flaticon2-delivery-package"></i>
-                            </span>
-                            <span class="nav-text">Tracking</span>
-                        </a>
-                    </li>
-                    <!--end::Item-->
-                    <!--begin::Item-->
-                    <li class="nav-item mr-3">
-                        <a href="#" class="nav-link py-4 px-6 text-white" data-toggle="tab" data-target="#kt_header_tab_2" role="tab">
-                            <span class="nav-icon">
-                                <i class="flaticon-truck"></i>
-                            </span>
-                            <span class="nav-text">Precios</span>
-                        </a>
-                    </li>
-                    <!--end::Item-->
-                    <!--begin::Item-->
-                    <li class="nav-item mr-3">
-                        <a href="#" class="nav-link py-4 px-6 text-white" data-toggle="tab" data-target="#kt_header_tab_2" role="tab">
-                            <span class="nav-icon">
-                                <i class="flaticon-support"></i>
-                            </span>
-                            <span class="nav-text">Ayuda</span>
-                        </a>
-                    </li>
-                    <!--end::Item-->
-                </ul>
+<div id="img" class="bg-radial-gradient-dark img">
+    <div class="form-group col-lg-4 container div-button">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Buscar código" />
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button">Buscar</button>
             </div>
         </div>
-    </nav>
-
-    <div id="img" class="bg-radial-gradient-dark img">
-        <div class="form-group col-lg-4 container div-button">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Buscar código" />
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button">Buscar</button>
+    </div>
+    <!--begin::Section-->
+    <div id="div-button" class="container py-8 div-button">
+        <div class="row">
+            <div class="col-lg-4">
+                <!--begin::Callout-->
+                <div class="card card-custom wave wave-animate-slower mb-8 mb-lg-0">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center p-5">
+                            <!--begin::Icon-->
+                            <div class="mr-6">
+                                <span class="svg-icon svg-icon-primary svg-icon-6x">
+                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo7\dist/../src/media/svg/icons\Shopping\Box3.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <path d="M20.4061385,6.73606154 C20.7672665,6.89656288 21,7.25468437 21,7.64987309 L21,16.4115967 C21,16.7747638 20.8031081,17.1093844 20.4856429,17.2857539 L12.4856429,21.7301984 C12.1836204,21.8979887 11.8163796,21.8979887 11.5143571,21.7301984 L3.51435707,17.2857539 C3.19689188,17.1093844 3,16.7747638 3,16.4115967 L3,7.64987309 C3,7.25468437 3.23273352,6.89656288 3.59386153,6.73606154 L11.5938615,3.18050598 C11.8524269,3.06558805 12.1475731,3.06558805 12.4061385,3.18050598 L20.4061385,6.73606154 Z" fill="#000000" opacity="0.3" />
+                                            <polygon fill="#000000" points="14.9671522 4.22441676 7.5999999 8.31727912 7.5999999 12.9056825 9.5999999 13.9056825 9.5999999 9.49408582 17.25507 5.24126912" />
+                                        </g>
+                                    </svg><!--end::Svg Icon-->
+                                </span>
+                            </div>
+                            <!--end::Icon-->
+                            <!--begin::Content-->
+                            <div class="d-flex flex-column">
+                                <a href="#" class="text-dark text-hover-primary font-weight-bold font-size-h4 mb-3">Rastreo</a>
+                                <div class="text-dark-75">Muestran el progreso de su envío en cada etapa</div>
+                            </div>
+                            <!--end::Content-->
+                        </div>
+                    </div>
                 </div>
+                <!--end::Callout-->
             </div>
-        </div>
-        <div class="col-lg-2 container">
-            <a href="@Url.Action("Index", "Login")" class="btn btn-success">Iniciar sesión</a>
+            <div class="col-lg-4">
+                <!--begin::Callout-->
+                <div class="card card-custom wave wave-animate-slow  mb-8 mb-lg-0">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center p-5">
+                            <!--begin::Icon-->
+                            <div class="mr-6">
+                                <span class="svg-icon svg-icon-danger svg-icon-6x">
+                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo7\dist/../src/media/svg/icons\Shopping\Cart1.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <path d="M18.1446364,11.84388 L17.4471627,16.0287218 C17.4463569,16.0335568 17.4455155,16.0383857 17.4446387,16.0432083 C17.345843,16.5865846 16.8252597,16.9469884 16.2818833,16.8481927 L4.91303792,14.7811299 C4.53842737,14.7130189 4.23500006,14.4380834 4.13039941,14.0719812 L2.30560137,7.68518803 C2.28007524,7.59584656 2.26712532,7.50338343 2.26712532,7.4104669 C2.26712532,6.85818215 2.71484057,6.4104669 3.26712532,6.4104669 L16.9929851,6.4104669 L17.606173,3.78251876 C17.7307772,3.24850086 18.2068633,2.87071314 18.7552257,2.87071314 L20.8200821,2.87071314 C21.4717328,2.87071314 22,3.39898039 22,4.05063106 C22,4.70228173 21.4717328,5.23054898 20.8200821,5.23054898 L19.6915238,5.23054898 L18.1446364,11.84388 Z" fill="#000000" opacity="0.3" />
+                                            <path d="M6.5,21 C5.67157288,21 5,20.3284271 5,19.5 C5,18.6715729 5.67157288,18 6.5,18 C7.32842712,18 8,18.6715729 8,19.5 C8,20.3284271 7.32842712,21 6.5,21 Z M15.5,21 C14.6715729,21 14,20.3284271 14,19.5 C14,18.6715729 14.6715729,18 15.5,18 C16.3284271,18 17,18.6715729 17,19.5 C17,20.3284271 16.3284271,21 15.5,21 Z" fill="#000000" />
+                                        </g>
+                                    </svg><!--end::Svg Icon-->
+                                </span>
+                            </div>
+                            <!--end::Icon-->
+                            <!--begin::Content-->
+                            <div class="d-flex flex-column">
+                                <a href="#" class="text-dark text-hover-primary font-weight-bold font-size-h4 mb-3">Obtenga una Cotización</a>
+                                <div class="text-dark-75">Calcule costo, comparta y compare</div>
+                            </div>
+                            <!--end::Content-->
+                        </div>
+                    </div>
+                </div>
+                <!--end::Callout-->
+            </div>
+            <div class="col-lg-4">
+                <!--begin::Callout-->
+                <div class="card card-custom wave wave-animate-slow  mb-8 mb-lg-0">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center p-5">
+                            <!--begin::Icon-->
+                            <div class="mr-6">
+                                <span class="svg-icon svg-icon-success svg-icon-6x">
+                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo7\dist/../src/media/svg/icons\Map\Marker1.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <path d="M5,10.5 C5,6 8,3 12.5,3 C17,3 20,6.75 20,10.5 C20,12.8325623 17.8236613,16.03566 13.470984,20.1092932 C12.9154018,20.6292577 12.0585054,20.6508331 11.4774555,20.1594925 C7.15915182,16.5078313 5,13.2880005 5,10.5 Z M12.5,12 C13.8807119,12 15,10.8807119 15,9.5 C15,8.11928813 13.8807119,7 12.5,7 C11.1192881,7 10,8.11928813 10,9.5 C10,10.8807119 11.1192881,12 12.5,12 Z" fill="#000000" fill-rule="nonzero" />
+                                        </g>
+                                    </svg><!--end::Svg Icon-->
+                                </span>
+                            </div>
+                            <!--end::Icon-->
+                            <!--begin::Content-->
+                            <div class="d-flex flex-column">
+                                <a href="#" class="text-dark text-hover-primary font-weight-bold font-size-h4 mb-3">Envia</a>
+                                <div class="text-dark-75">Encuentra el servicio adecuado</div>
+                            </div>
+                            <!--end::Content-->
+                        </div>
+                    </div>
+                </div>
+                <!--end::Callout-->
+            </div>
         </div>
     </div>
-
-    <!--begin::Footer-->
-    <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">
-        <!--begin::Container-->
-        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
-            <!--begin::Copyright-->
-            <div class="text-dark order-2 order-md-1">
-                <span class="text-muted font-weight-bold mr-2">2022©</span>
-                <a href="http://keenthemes.com/metronic" target="_blank" class="text-dark-75 text-hover-primary">Maranatha Cargo Express </a>
-            </div>
-            <!--end::Copyright-->
-            <!--begin::Nav-->
-            <div class="nav nav-dark order-1 order-md-2">
-                <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link pr-3 pl-0">About</a>
-                <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link px-3">Team</a>
-                <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link pl-3 pr-0">Contact</a>
-            </div>
-            <!--end::Nav-->
-        </div>
-        <!--end::Container-->
-    </div>
-    <!--end::Footer-->
+    <!--end::Section-->
 </div>
+
+
+
+@Html.Partial("~/Views/Shared/footers/_ClientFooter.cshtml")
 

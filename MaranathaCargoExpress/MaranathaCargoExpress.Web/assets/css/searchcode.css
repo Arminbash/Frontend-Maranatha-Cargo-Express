@@ -4,9 +4,12 @@
     background-position: center center;
     background-attachment: fixed;
     background-size: 100% auto;
- 
     height:100%
 }
 .div-button {
-    margin-top: 200px;
+    margin-top: 70px;
+}
+
+.div-card {
+    margin-top: 150px;
 }
