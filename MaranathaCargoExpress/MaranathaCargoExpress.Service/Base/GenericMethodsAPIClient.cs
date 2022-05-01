@@ -114,7 +114,7 @@ namespace MaranathaCargoExpress.Service.Base
             }
         }
 
-        public static async Task<T> Put(string endPoint, int id, object value, string token = null)
+        public static async Task<T> Put(string endPoint, int? id, object value, string token = null)
         {
             using (var client = new HttpClient())
             {
@@ -124,7 +124,7 @@ namespace MaranathaCargoExpress.Service.Base
 
                 if (token != null) client.DefaultRequestHeaders.Authorization= new AuthenticationHeaderValue("Bearer", token);
 
-                var response = client.PutAsJsonAsync(endPoint + $"/{id}", value).Result;
+                var response =id is null ? client.PutAsJsonAsync(endPoint, value).Result :  client.PutAsJsonAsync(endPoint + $"/{id}", value).Result;
                 if (response.StatusCode == HttpStatusCode.BadRequest)
                 {
                     var cuerpo = await response.Content.ReadAsStringAsync();
