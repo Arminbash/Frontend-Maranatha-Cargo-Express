@@ -124,6 +124,8 @@
     <Compile Include="Service\ClienteServices.cs" />
     <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\TipoPersonaService.cs" />
+    <Compile Include="ViewModel\Base\PaginationDto.cs" />
+    <Compile Include="ViewModel\Base\PaginationRequestBase.cs" />
     <Compile Include="ViewModel\ClienteDto.cs" />
     <Compile Include="ViewModel\EmpleadoDto.cs" />
     <Compile Include="ViewModel\LoginDto.cs" />

@@ -126,29 +126,27 @@
 @section scripts {
     <script>
         'use strict';
-         function GetListTipoPersona() {
-             var jqXHR = $.ajax({
-                type: 'POST',
-                url: '@Url.Action("GetListTipoPersona", "Person")',
-                dataType: 'json',
-                async:false,
-                success: function (data) {
-                },
-                error: function (ex) {
-                }
-             });
-             return jqXHR.responseJSON;
-        }
         var KTDatatableDataLocalDemo = function () {
             var LoadData = function () {
-                var jsonStr = GetListTipoPersona().replace('"','\"');
-                var dataJSONArray = JSON.parse(jsonStr);
-
                 var datatable = $('#kt_datatable').KTDatatable({
                     data: {
-                        type: 'local',
-                        source: dataJSONArray,
+                        type: 'remote',
+                        source: {
+                            read: {
+                                url: '@Url.Action("GetListaTipoPersona", "Person")',
+                                map: function (raw) {
+                                    var dataSet = raw;
+                                    if (typeof raw.data !== 'undefined') {
+                                        dataSet = raw.data;
+                                    }
+                                    return dataSet;
+                                },
+                            },
+                        },
                         pageSize: 10,
+                        serverPaging: true,
+                        serverFiltering: true,
+                        serverSorting: true,
                     },
 
                     layout: {

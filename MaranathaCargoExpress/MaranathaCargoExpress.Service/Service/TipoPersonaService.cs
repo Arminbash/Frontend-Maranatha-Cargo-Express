@@ -1,5 +1,6 @@
 ﻿using MaranathaCargoExpress.Service.Base;
 using MaranathaCargoExpress.Service.ViewModel;
+using MaranathaCargoExpress.Service.ViewModel.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,12 @@ namespace MaranathaCargoExpress.Service.Service
             var request = await GenericMethodsAPIClient<TipoPersonaDto>.Get(ApiConnection.EndPoints.TipoPersona + "ObtenerTipoPersona/"+id.ToString(), token);
             request.Estado = false;
             return await EditarTipoPersona(request, token);
+        }
+
+        public async Task<PaginationRequestBase<TipoPersonaDto>> ListaTipoPersonaPaginado(PaginationDto pagination, string token)
+        {
+            var request = await GenericMethodsAPIClient<PaginationRequestBase<TipoPersonaDto>>.Post(ApiConnection.EndPoints.TipoPersona + "ObtenerTipoPersonaPaginado",pagination, token);
+            return request;
         }
     }
 }

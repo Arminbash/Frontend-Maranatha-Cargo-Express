@@ -25,7 +25,7 @@ namespace MaranathaCargoExpress.Service.Base
                 if (token != null) client.DefaultRequestHeaders.Authorization= new AuthenticationHeaderValue("Bearer", token);
 
                 var response = client.GetAsync(endPoint).Result;
-                if (response.StatusCode == HttpStatusCode.BadRequest)
+                if (response.StatusCode != HttpStatusCode.OK)
                 {
                     var cuerpo = await response.Content.ReadAsStringAsync();
                     var erroresDelAPI = APIUtil.ExtraerErroresDelWebAPI(cuerpo);
@@ -35,7 +35,7 @@ namespace MaranathaCargoExpress.Service.Base
                         Console.WriteLine($"-{campoErrores.Key}");
                         foreach (var error in campoErrores.Value)
                         {
-                            Console.WriteLine($"  {error}");
+                            Console.WriteLine($"{error}");
                         }
                     }
                 }
@@ -59,7 +59,7 @@ namespace MaranathaCargoExpress.Service.Base
                 if (token != null) client.DefaultRequestHeaders.Authorization= new AuthenticationHeaderValue("Bearer", token);
 
                 var response = client.GetAsync(endPoint + $"/{id}").Result;
-                if (response.StatusCode == HttpStatusCode.BadRequest)
+                if (response.StatusCode != HttpStatusCode.OK)
                 {
                     var cuerpo = await response.Content.ReadAsStringAsync();
                     var erroresDelAPI = APIUtil.ExtraerErroresDelWebAPI(cuerpo);
@@ -69,7 +69,7 @@ namespace MaranathaCargoExpress.Service.Base
                         Console.WriteLine($"-{campoErrores.Key}");
                         foreach (var error in campoErrores.Value)
                         {
-                            Console.WriteLine($"  {error}");
+                            Console.WriteLine($"{error}");
                         }
                     }
                 }
@@ -92,7 +92,7 @@ namespace MaranathaCargoExpress.Service.Base
                 if (token != null) client.DefaultRequestHeaders.Authorization= new AuthenticationHeaderValue("Bearer", token);
 
                 var response = client.PostAsJsonAsync(endPoint, value).Result;
-                if (response.StatusCode == HttpStatusCode.BadRequest)
+                if (response.StatusCode != HttpStatusCode.OK)
                 {
                     var cuerpo = await response.Content.ReadAsStringAsync();
                     var erroresDelAPI = APIUtil.ExtraerErroresDelWebAPI(cuerpo);
@@ -102,7 +102,7 @@ namespace MaranathaCargoExpress.Service.Base
                         Console.WriteLine($"-{campoErrores.Key}");
                         foreach (var error in campoErrores.Value)
                         {
-                            Console.WriteLine($"  {error}");
+                            Console.WriteLine($"{error}");
                         }
                     }
                 }
@@ -125,7 +125,7 @@ namespace MaranathaCargoExpress.Service.Base
                 if (token != null) client.DefaultRequestHeaders.Authorization= new AuthenticationHeaderValue("Bearer", token);
 
                 var response =id is null ? client.PutAsJsonAsync(endPoint, value).Result :  client.PutAsJsonAsync(endPoint + $"/{id}", value).Result;
-                if (response.StatusCode == HttpStatusCode.BadRequest)
+                if (response.StatusCode != HttpStatusCode.OK)
                 {
                     var cuerpo = await response.Content.ReadAsStringAsync();
                     var erroresDelAPI = APIUtil.ExtraerErroresDelWebAPI(cuerpo);
@@ -135,7 +135,7 @@ namespace MaranathaCargoExpress.Service.Base
                         Console.WriteLine($"-{campoErrores.Key}");
                         foreach (var error in campoErrores.Value)
                         {
-                            Console.WriteLine($"  {error}");
+                            Console.WriteLine($"{error}");
                         }
                     }
                 }
@@ -158,7 +158,7 @@ namespace MaranathaCargoExpress.Service.Base
                 if (token != null) client.DefaultRequestHeaders.Authorization= new AuthenticationHeaderValue("Bearer", token);
 
                 var response = client.DeleteAsync(endPoint + $"/{id}").Result;
-                if (response.StatusCode == HttpStatusCode.BadRequest)
+                if (response.StatusCode != HttpStatusCode.OK)
                 {
                     var cuerpo = await response.Content.ReadAsStringAsync();
                     var erroresDelAPI = APIUtil.ExtraerErroresDelWebAPI(cuerpo);
@@ -168,7 +168,7 @@ namespace MaranathaCargoExpress.Service.Base
                         Console.WriteLine($"-{campoErrores.Key}");
                         foreach (var error in campoErrores.Value)
                         {
-                            Console.WriteLine($"  {error}");
+                            Console.WriteLine($"{error}");
                         }
                     }
                 }
@@ -182,32 +182,3 @@ namespace MaranathaCargoExpress.Service.Base
 
     }
 }
-
-//public static async Task<T> Post(string endPoint, object value)
-//{
-//    var jsonSerializerOptions = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
-//    var url = ApiConnection.ApiUrl + endPoint;
-//    using (var client = new HttpClient())
-//    {
-//        var response = client.PostAsJsonAsync(url, value).Result;
-//        if (response.StatusCode == HttpStatusCode.BadRequest)
-//        {
-//            var cuerpo = await response.Content.ReadAsStringAsync();
-//            var erroresDelAPI = APIUtil.ExtraerErroresDelWebAPI(cuerpo);
-
-//            foreach (var campoErrores in erroresDelAPI)
-//            {
-//                Console.WriteLine($"-{campoErrores.Key}");
-//                foreach (var error in campoErrores.Value)
-//                {
-//                    Console.WriteLine($"  {error}");
-//                }
-//            }
-//        }
-//        if (response.IsSuccessStatusCode)
-//        {
-//            return await response.Content.ReadAsAsync<T>();
-//        }
-//        return await Task.FromResult<T>(null);
-//    }
-//}
