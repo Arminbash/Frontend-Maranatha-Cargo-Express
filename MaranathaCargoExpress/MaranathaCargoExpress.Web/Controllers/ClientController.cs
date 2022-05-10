@@ -63,10 +63,6 @@ namespace MaranathaCargoExpress.Web.Controllers
             }
             LoadDataSelectDto<TipoClienteDto> newRequest = new Service.ViewModel.Base.LoadDataSelectDto<TipoClienteDto>();
             newRequest.incomplete_results = true;
-            foreach (var items in request.Result.data)
-            {
-                items.full_name = items.Tipo;
-            }
             newRequest.items = request.Result.data;
             newRequest.total_count = request.Result.meta.total;
 

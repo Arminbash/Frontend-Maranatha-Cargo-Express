@@ -19,7 +19,7 @@ namespace MaranathaCargoExpress.Service.ViewModel
         /// <summary>
         /// Tipo de Cliente
         /// </summary>
-        public string full_name { get; set; }
+        public int id { get { return Id;} }
 
         /// <summary>
         /// Estado
