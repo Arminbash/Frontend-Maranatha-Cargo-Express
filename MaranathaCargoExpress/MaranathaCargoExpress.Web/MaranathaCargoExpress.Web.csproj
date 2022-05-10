@@ -2416,7 +2416,7 @@
     <Content Include="Views\Shared\Navbars\_ClientNavbar.cshtml" />
     <Content Include="Views\Shared\footers\_ClientFooter.cshtml" />
     <Content Include="Views\Client\Cotizacion.cshtml" />
-    <Content Include="Views\Client\Index.cshtml" />
+    <Content Include="Views\Client\Client.cshtml" />
     <Content Include="Views\Person\TipoPersona.cshtml" />
     <Content Include="Views\TypeClient\TypeClient.cshtml" />
   </ItemGroup>

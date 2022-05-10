@@ -1,5 +1,6 @@
 ﻿using MaranathaCargoExpress.Service.Base;
 using MaranathaCargoExpress.Service.ViewModel;
+using MaranathaCargoExpress.Service.ViewModel.Base;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -16,6 +17,11 @@ namespace MaranathaCargoExpress.Service.Service
         public async Task<ClienteDto> AddClienteAsync(ClienteDto clienteDto,string token)
         {
             var request = await GenericMethodsAPIClient<ClienteDto>.Post(ApiConnection.EndPoints.Cliente + "CreateCliente", clienteDto ,token);
+            return request;
+        }
+        public async Task<PaginationRequestBase<ClienteDto>> ListaClientePaginado(PaginationDto pagination, string token)
+        {
+            var request = await GenericMethodsAPIClient<PaginationRequestBase<ClienteDto>>.Post(ApiConnection.EndPoints.Cliente + "ObtenerClientePaginado", pagination, token);
             return request;
         }
 
