@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "Propuesta";
+    Layout = "~/Views/Shared/Layouts/_MainLayout.cshtml";
+}
+
+@Html.Partial("~/Views/Shared/Navbars/_ClientNavbar.cshtml")
+
+<div id="img" class="bg-radial-gradient-dark img">
+
+    <div class="container d-flex flex-column mt-lg-16 mt-sm-2">
+        <h1 class="p-5" style="color:aliceblue">Compara, Envía y ahorra. </h1>
+        <div class="card card-custom bg-diagonal-info">
+            <div class="card-header">
+                <div class="card-title">
+                    <h3 class="card-label">Elemento Para Realizar Pedidos</h3>
+                </div>
+                <div class="card-toolbar">
+                    <!--nav-light-success va mejor con su estilo-->
+                    <ul class="nav nav-light-info nav-bold nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#kt_tab_pane_5_1">
+                                <span class="nav-icon"><i class="flaticon2-send-1"></i></span>
+                                <span class="nav-text">Enviar Paquete</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#kt_tab_pane_5_2">
+                                <span class="nav-icon"><i class="flaticon2-map"></i></span>
+                                <span class="nav-text">Seguimiento</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div> <!-- End Card Toolbar-->
+            </div>
+            <div class="card-body">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="kt_tab_pane_5_1" role="tabpanel" aria-labelledby="kt_tab_pane_5_1">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h5>Desde</h5>
+                                <div class="card card-custom gutter-b">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Pais</h6>
+                                        <h6 class="card-subtitle mb-2 text-muted">Miami</h6>
+                                        <div class="form-group">
+                                            <div class="input-group input-group-sm">
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-box" aria-hidden="true"></i></span></div>
+                                                <input type="text" class="form-control" placeholder="Introducir Ciudad o CP" aria-describedby="basic-addon2" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <h5>A</h5>
+                                <div class="card card-custom gutter-b">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Pais</h6>
+                                        <h6 class="card-subtitle mb-2 text-muted">Nicaragua</h6>
+                                        <div class="form-group">
+                                            <div class="input-group input-group-sm">
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-plane-arrival" aria-hidden="true"></i></span></div>
+                                                <input type="text" class="form-control" placeholder="Introducir Ciudad o CP" aria-describedby="basic-addon2" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <h5>Paquete 1</h5>
+                                <div class="card card-custom gutter-b">
+                                    <div class="card-body">
+                                        <div class="form-group mb-2">
+                                            <div class="input-group input-group-lg">
+                                                <input type="text" class="form-control" placeholder="Peso" aria-describedby="basic-addon2" />
+                                                <div class="input-group-append"><span class="input-group-text"><i class="fa fa-weight"></i></span></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group input-group-lg">
+                                                <input type="text" class="form-control" placeholder="Largo" aria-describedby="basic-addon2" />
+                                                <input type="text" class="form-control" placeholder="Ancho" aria-describedby="basic-addon2" />
+                                                <input type="text" class="form-control" placeholder="Alto" aria-describedby="basic-addon2" />
+                                                <div class="input-group-append"><span class="input-group-text"><i class="fa fa-ruler"></i></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Segundo tab Content -->
+                    <div class="tab-pane fade" id="kt_tab_pane_5_2" role="tabpanel" aria-labelledby="kt_tab_pane_5_2">
+                        Tracking
+                    </div>
+
+
+                </div>
+            </div> <!--End Container Card-->
+        </div> <!--End container-->
+
+    </div>
+</div>
+    @Html.Partial("~/Views/Shared/footers/_ClientFooter.cshtml")

@@ -161,6 +161,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\PropuestaController.cs" />
     <Compile Include="Controllers\TypeClientController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2419,6 +2420,7 @@
     <Content Include="Views\Client\Client.cshtml" />
     <Content Include="Views\Person\TipoPersona.cshtml" />
     <Content Include="Views\TypeClient\TypeClient.cshtml" />
+    <Content Include="Views\Propuesta\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
