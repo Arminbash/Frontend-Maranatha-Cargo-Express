@@ -1,7 +1,6 @@
 ﻿@{
     ViewBag.Title = "Users";
     Layout = "~/Views/Shared/Layouts/_EmployeeMainLayout.cshtml";
-    @model List<MaranathaCargoExpress.Service.ViewModel.TipoClienteDto>
 }
 
 <div class="row">
@@ -10,11 +9,11 @@
             <div class="card-header flex-wrap border-0 pt-6 pb-0">
                 <div class="card-title">
                     <h3 class="card-label">
-                        Lista cliente
+                        Lista de usuarios
                     </h3>
                 </div>
                 <div class="card-toolbar">
-                    <a href="#" class="btn btn-primary font-weight-bolder" data-toggle="modal" data-target="#ClientModal">
+                    <a href="#" class="btn btn-primary font-weight-bolder" data-toggle="modal" data-target="#TipoPersonaModal">
                         <span class="svg-icon svg-icon-md">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -25,48 +24,30 @@
                                 </g>
                             </svg>
                             <!--end::Svg Icon-->
-                        </span>Nuevo  cliente
+                        </span>Nuevo tipo persona
                     </a>
-                    <div class="modal fade" id="ClientModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+                    <div class="modal fade" id="TipoPersonaModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Nuevo  cliente</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Nuevo tipo persona</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <i aria-hidden="true" class="ki ki-close"></i>
                                     </button>
                                 </div>
-                                <div class="modal-body" id="ktCliente">
-                                    <form class="form" id="kt_Cliente">
+                                <div class="modal-body" id="KTClient">
+                                    <form class="form" id="kt_TipoPersona">
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label>Tipo de cliente</label>
-                                                <div class="col">
-                                                    <select class="form-control selectpicker" name="cliente" id="cliente">
-                                                        @foreach (var oElemnto in @ViewBag.TipoCliente)
-                                                        {
-                                                            if (oElemnto.Estado == true)
-                                                            {
-                                                                <option value="@oElemnto.Id">@oElemnto.Tipo</option>
-                                                            }
-                                                        }
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-form-label">Persona</label>
-                                                <div class="col">
-                                                    <select class="form-control js-data-example-ajax" id="kt_select2_6" name="param" style="width:100%">
-                                                        <option label="Label"></option>
-                                                    </select>
-                                                </div>
+                                                <label>Tipo de persona:</label>
+                                                <input type="text" class="form-control" placeholder="Nombre tipo de persona" name="TipoPersona" id="tipoPersona" />
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-primary font-weight-bold" id="kt_Cliente_submit">Guardar</button>
+                                    <button type="button" class="btn btn-primary font-weight-bold" id="kt_TipoPersona_submit">Guardar</button>
                                 </div>
                             </div>
 
@@ -106,27 +87,25 @@
         </div>
     </div>
 
-    <div class="modal fade" id="TipoClienteModalEditar" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal fade" id="TipoPersonaModalEditar" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Editar  cliente</h5>
+                    <h5 class="modal-title">Editar tipo persona</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <i aria-hidden="true" class="ki ki-close"></i>
                     </button>
                 </div>
-                <div class="modal-body" id="ktClienteEditar">
-                    <form class="form" id="kt_ClienteEditar">
+                <div class="modal-body" id="ktTipoPersonaEditar">
+                    <form class="form" id="kt_TipoPersonaEditar">
                         <div class="card-body">
-                            <input type="number" id="idClienteEditar" hidden />
+                            <input type="number" id="idTipoPersonaEditar" hidden />
                             <div class="form-group">
-                                <label>Tipo de cliente:</label>
-                                <input type="text" class="form-control" placeholder="Nombre tipo de cliente" name="tipoClienteEditar" id="tipoCliente" />
                                 <label>Tipo de persona:</label>
-                                <input type="text" class="form-control" placeholder="Nombre persona" name="personaEditar" id="persona" />
+                                <input type="text" class="form-control" placeholder="Nombre tipo de persona" name="tipoPersonaEditar" id="tipoPersonaEditar" />
                             </div>
                             <label class="checkbox checkbox-outline checkbox-success checkbox-lg">
-                                <input type="checkbox" name="chkEstado" id="chkEstadoCliente" />
+                                <input type="checkbox" name="chkEstado" id="chkEstadoTipoPersona"/>
                                 <span></span>
                                 Estado
                             </label>
@@ -135,12 +114,14 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary font-weight-bold" id="kt_Cliente_Editar">Editar</button>
+                    <button type="button" class="btn btn-primary font-weight-bold" id="kt_TipoPersona_Editar" >Editar</button>
                 </div>
             </div>
 
         </div>
     </div>
+
+
 </div>
 @section scripts {
     <script>
@@ -152,7 +133,7 @@
                         type: 'remote',
                         source: {
                             read: {
-                                url: '@Url.Action("GetListaCliente", "Client")',
+                                url: '@Url.Action("GetListaTipoPersona", "TypePerson")',
                                 map: function (raw) {
                                     var dataSet = raw;
                                     if (typeof raw.data !== 'undefined') {
@@ -191,15 +172,9 @@
                         selector: true,
                         textAlign: 'center',
                     }, {
-                        field: 'PersonaId',
-                        title: 'PersonaId',
-                        }, {
-                        field: 'TipoClienteId',
-                        title: 'TipoClienteId',
-                        }, {
-                        field: 'PrimerNombre',
-                        title: 'PrimerNombre',
-                        },{
+                        field: 'Tipo',
+                        title: 'Tipo',
+                    }, {
                         field: 'Estado',
                         title: 'Estado',
                         template: function (row) {
@@ -224,7 +199,7 @@
                         autoHide: false,
                         template: function (row) {
                             return '\
-							<a href="javascript:;" class="btn btn-sm btn-clean btn-icon mr-2" title="Editar" onclick="verRegistroEditar('+ row.Id + ',\'' + row.PersonaId + ',\'' + row.TipoClienteId + '\',' + row.Estado+')">\
+							<a href="javascript:;" class="btn btn-sm btn-clean btn-icon mr-2" title="Editar" onclick="verRegistroEditar('+ row.Id + ',\'' + row.Tipo + '\',' + row.Estado+')">\
 	                            <span class="svg-icon svg-icon-md">\
 	                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
 	                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -278,10 +253,10 @@
             var _handleClientForm = function () {
                 var validation;
                 validation = FormValidation.formValidation(
-                    KTUtil.getById('kt_Cliente'),
+                    KTUtil.getById('kt_TipoPersona'),
                     {
                         fields: {
-                            idTipoCliente: {
+                            TipoPersona: {
                                 validators: {
                                     notEmpty: {
                                         message: 'El nombre de tipo de persona es requerido'
@@ -296,14 +271,55 @@
                         }
                     }
                 );
-                $('#kt_Cliente_submit').on('click', function (e) {
+                var validationEditar;
+                validationEditar = FormValidation.formValidation(
+                    KTUtil.getById('kt_TipoPersonaEditar'),
+                    {
+                        fields: {
+                            tipoPersonaEditar: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'El nombre de tipo de persona es requerido'
+                                    }
+                                }
+                            },
+                        },
+                        plugins: {
+                            trigger: new FormValidation.plugins.Trigger(),
+                            submitButton: new FormValidation.plugins.SubmitButton(),
+                            bootstrap: new FormValidation.plugins.Bootstrap()
+                        }
+                    }
+                );
+                $('#kt_TipoPersona_submit').on('click', function (e) {
                     e.preventDefault();
                     validation.validate().then(function (status) {
                         if (status == 'Valid') {
-                            AddClient();
-                            console.log("ff");
+                            AddTipoPersona();
                             Limpiar();
                             CerrarModal();
+                        } else {
+                            swal.fire({
+                                text: "Lo sentimos, parece que se han detectado algunos errores, intentalo de nuevo.",
+                                icon: "error",
+                                buttonsStyling: false,
+                                confirmButtonText: "Entiendo!",
+                                customClass: {
+                                    confirmButton: "btn font-weight-bold btn-light-primary"
+                                }
+                            }).then(function () {
+                                KTUtil.scrollTop();
+                            });
+                        }
+                    });
+                });
+
+                $('#kt_TipoPersona_Editar').on('click', function (e) {
+                    e.preventDefault();
+                    validationEditar.validate().then(function (status) {
+                        if (status == 'Valid') {
+                            editarRegistro();
+                            $("#TipoPersonaModalEditar").modal('toggle');
                         } else {
                             swal.fire({
                                 text: "Lo sentimos, parece que se han detectado algunos errores, intentalo de nuevo.",
@@ -333,76 +349,16 @@
 
     </script>
     <script>
-
-        function formatRepo(repo) {
-            if (repo.loading) return repo.text;
-            var markup = "<div class='select2-result-repository clearfix'>" +
-                "<div class='select2-result-repository__meta'>" +
-                "<div class='select2-result-repository__title'>" + repo.Tipo + "</div>" +
-                "</div></div>";
-            return markup;
-
-        }
-
-        function formatRepoSelection(repo) {
-            return repo.Tipo || repo.text;
-        }
-        $(".js-data-example-ajax").select2({
-            cacheDataSource: [],
-            placeholder: "Search for git repositories",
-            allowClear: true,
-            ajax: {
-                url: 'https://localhost:44308//Client/GetListClientForSelect',
-                dataType: 'json',
-                delay: 250,
-                data: function (params) {
-                    return {
-                        q: params.term, // search term
-                        page: params.page
-                    };
-                },
-                processResults: function (data, params) {
-                    params.page = params.page || 1;
-                    return {
-                        results: data.items,
-                        pagination: {
-                            more: (params.page * 30) < data.total_count
-                        }
-                    };
-                },
-                cache: true
-            },
-            escapeMarkup: function (markup) {
-                return markup;
-            },
-            minimumInputLength: 1,
-            templateResult: formatRepo,
-            templateSelection: function (repo) {
-                return repo.Tipo || repo.text;
-            },
-            language: {
-                inputTooShort: function () {
-                    return "Debes ingresar más caracteres...";
-                }
-            }
-
-        });
-    </script>
-    <script>
-        function AddClient() {
-            var TipoClienteId = $("#cliente").val();
-            var PersonaId = 2;
-            console.log(TipoClienteId);
-            var clienteDto = {
-                TipoClienteId: TipoClienteId,
-                PersonaId: PersonaId,
-                PrimerNombre:"Hola"
+        function AddTipoPersona() {
+            var tipoPersona = $("#tipoPersona").val();
+            var tipoPersonaDto = {
+                tipo: tipoPersona
             };
             $.ajax({
                 type: 'POST',
-                url: '@Url.Action( "AddClient","Client")',
+                url: '@Url.Action("AddTipoPersona", "TypePerson")',
                 dataType: 'json',
-                data: clienteDto,
+                data: tipoPersonaDto,
                 async:false,
                 success: function (data) {
                     swal.fire({
@@ -433,12 +389,87 @@
             });
         }
         function CerrarModal() {
-            $('#ClientModal').modal('toggle');
+            $('#TipoPersonaModal').modal('toggle');
         }
         function Limpiar() {
-            $("#kt_Cliente")[0].reset();
+            $("#kt_TipoPersona")[0].reset();
             reloadGrid();
         }
-
+        function verRegistroEditar(id, tipo, estado) {
+            $("#idTipoPersonaEditar").val(id);
+            $("#tipoPersonaEditar").val(tipo);
+            $("#chkEstadoTipoPersona").prop('checked',estado);
+            $("#TipoPersonaModalEditar").modal("show");
+        }
+        function editarRegistro() {
+            var tipoPersonaDto = {
+                Id : $("#idTipoPersonaEditar").val(),
+                Tipo :$("#tipoPersonaEditar").val(),
+                Estado: $('#chkEstadoTipoPersona').prop('checked')
+            };
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("EditarTipoPersona", "TypePerson")',
+                dataType: 'json',
+                data: tipoPersonaDto,
+                async:false,
+                success: function (data) {
+                    swal.fire({
+                        text: "se edito correctamente",
+                        icon: "success",
+                        buttonsStyling: false,
+                        confirmButtonText: "Entiendo!",
+                        customClass: {
+                            confirmButton: "btn font-weight-bold btn-light-primary"
+                        }
+                    }).then(function () {
+                        KTUtil.scrollTop();
+                        reloadGrid();
+                    });
+                },
+                error: function (ex) {
+                    swal.fire({
+                        text: "error al editar",
+                        icon: "error",
+                        buttonsStyling: false,
+                        confirmButtonText: "Entiendo!",
+                        customClass: {
+                            confirmButton: "btn font-weight-bold btn-light-primary"
+                        }
+                    }).then(function () {
+                        KTUtil.scrollTop();
+                    });
+                }
+            });
+        }
+        function eliminarRegistro(id) {
+            Swal.fire({
+                title: "Esta seguro que desea borrar?",
+                text: "Se desactivara el registro",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Eliminar",
+                cancelButtonText: "Cancelar"
+            }).then(function (result) {
+                if (result.value) {
+                    var jqXHR = $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("EliminarTipoPersona", "TypePerson")?Id='+id,
+                            dataType: 'json',
+                            async:false,
+                        success: function (data) {
+                            },
+                            error: function (ex) {
+                            }
+                    });
+                    jqXHR.responseJSON;
+                    Swal.fire(
+                        "Borrado!",
+                        "Se dejo inactivo el registro.",
+                        "Ok"
+                    ).then(function (result) { reloadGrid(); });
+                }
+            });
+        }
     </script>
 }

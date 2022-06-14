@@ -10,12 +10,13 @@ namespace MaranathaCargoExpress.Service.ViewModel.Base
     /// Dto para manejar la paginacion en los elementos
     /// </summary>
     /// Johnny Arcia
-    public class PaginationDto:SortDto
+    public class PaginationDto : SortDto
     {
         public int page { get; set; }
         public int pages { get; set; }
         public int perpage { get; set; }
         public int total { get; set; }
+       
     }
     /// <summary>
     /// Manejo de ordenamiento

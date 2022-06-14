@@ -1,43 +1,40 @@
 ﻿using MaranathaCargoExpress.Service.Service;
 using MaranathaCargoExpress.Service.ViewModel;
+using System.Text.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Text.Json;
 using MaranathaCargoExpress.Service.ViewModel.Base;
 
 namespace MaranathaCargoExpress.Web.Controllers
 {
     [Authorize]
-    public class PersonController : Controller
+    public class TypePersonController : Controller
     {
-        private readonly TipoPersonaService _tipoPersonaService = new TipoPersonaService();
-        PersonService _personaService = new PersonService();
+        TipoPersonaService _tipoPersonaService = new TipoPersonaService();
         // GET: Person
         public ActionResult Index()
         {
             ViewBag.EmployeeName = SessionHelper.GetName();
             ViewBag.UserName = SessionHelper.GetUserName();
             ViewBag.Email = SessionHelper.GetEmail();
-            ViewBag.TipoPersona = _tipoPersonaService.ListaTipoPersona(SessionHelper.GetToken()).Result;
             return View();
         }
 
-        public ActionResult Person()
+        public ActionResult TipoPersona()
         {
             ViewBag.EmployeeName = SessionHelper.GetName();
             ViewBag.UserName = SessionHelper.GetUserName();
             ViewBag.Email = SessionHelper.GetEmail();
-            ViewBag.TipoPersona = _tipoPersonaService.ListaTipoPersona(SessionHelper.GetToken()).Result;
             return View();
         }
 
         [HttpPost]
-        public JsonResult AddPersona(PersonaDto personaDto)
+        public JsonResult AddTipoPersona(TipoPersonaDto tipoPersonaDto)
         {
-            var request = _personaService.AddTipoPersonaAsync(personaDto, SessionHelper.GetToken());
+            var request = _tipoPersonaService.AddTipoPersonaAsync(tipoPersonaDto, SessionHelper.GetToken());
             if (request.Result == null)
             {
                 return new BadRequest();
@@ -47,7 +44,7 @@ namespace MaranathaCargoExpress.Web.Controllers
 
         public JsonResult GetListTipoPersona()
         {
-            var request = _personaService.ListaPersona(SessionHelper.GetToken());
+            var request = _tipoPersonaService.ListaTipoPersona(SessionHelper.GetToken());
             if (request.Result == null)
             {
                 return new BadRequest();
@@ -56,9 +53,9 @@ namespace MaranathaCargoExpress.Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult EliminarPersona(int Id)
+        public JsonResult EliminarTipoPersona(int Id)
         {
-            var request = _personaService.EliminarPersona(Id, SessionHelper.GetToken());
+            var request = _tipoPersonaService.EliminarTipoPersona(Id, SessionHelper.GetToken());
             if (request.Result == null)
             {
                 return new BadRequest();
@@ -67,9 +64,9 @@ namespace MaranathaCargoExpress.Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult EditarPersona(PersonaDto personaDto)
+        public JsonResult EditarTipoPersona(TipoPersonaDto tipoPersonaDto)
         {
-            var request = _personaService.EditarPersona(personaDto, SessionHelper.GetToken());
+            var request = _tipoPersonaService.EditarTipoPersona(tipoPersonaDto, SessionHelper.GetToken());
             if (request.Result == null)
             {
                 return new BadRequest();
@@ -78,13 +75,13 @@ namespace MaranathaCargoExpress.Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult GetListaPersona(PaginationDto pagination, SortDto sort, QueryDto query)
+        public JsonResult GetListaTipoPersona(PaginationDto pagination, SortDto sort, QueryDto query)
         {
-            pagination.sort = sort != null ? sort.sort : null;
-            pagination.field = sort != null ? sort.field : null;
-            pagination.Estado = query != null ? query.Estado : null;
-            pagination.generalSearch = query != null ? query.generalSearch : null;
-            var request = _personaService.ListPersonPagination(pagination, SessionHelper.GetToken());
+            pagination.sort =sort != null ? sort.sort : null;
+            pagination.field=sort != null ? sort.field : null;
+            pagination.Estado=query != null ? query.Estado : null;
+            pagination.generalSearch= query != null ? query.generalSearch : null;
+            var request = _tipoPersonaService.ListaTipoPersonaPaginado(pagination, SessionHelper.GetToken());
             if (request == null || request.Result == null)
             {
                 return new BadRequest();

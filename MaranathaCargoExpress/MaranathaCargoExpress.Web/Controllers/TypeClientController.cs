@@ -76,7 +76,6 @@ namespace MaranathaCargoExpress.Web.Controllers
             pagination.field = sort != null ? sort.field : null;
             pagination.Estado = query != null ? query.Estado : null;
             pagination.generalSearch = query != null ? query.generalSearch : null;
-
             var request = _typeClientService.ListaTipoClientePaginado(pagination, SessionHelper.GetToken());
             if (request == null || request.Result == null)
             {

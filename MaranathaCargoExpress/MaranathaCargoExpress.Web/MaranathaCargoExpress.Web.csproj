@@ -156,11 +156,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\DocumentoController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\TypePersonController.cs" />
     <Compile Include="Controllers\TypeClientController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2417,8 +2419,10 @@
     <Content Include="Views\Shared\footers\_ClientFooter.cshtml" />
     <Content Include="Views\Client\Cotizacion.cshtml" />
     <Content Include="Views\Client\Client.cshtml" />
-    <Content Include="Views\Person\TipoPersona.cshtml" />
+    <Content Include="Views\TypePerson\TipoPersona.cshtml" />
     <Content Include="Views\TypeClient\TypeClient.cshtml" />
+    <Content Include="Views\Person\Person.cshtml" />
+    <Content Include="Views\Documento\Documento.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
