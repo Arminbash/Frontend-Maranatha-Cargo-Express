@@ -56,7 +56,7 @@
                                             <div class="form-group">
                                                 <label class="col-form-label">Persona</label>
                                                 <div class="col">
-                                                    <select class="form-control js-data-example-ajax" id="kt_select2_6" name="param" style="width:100%">
+                                                    <select class="form-control select2" id="kt_select2_6" name="kt_select2_6" style="width:100%">
                                                         <option label="Label"></option>
                                                     </select>
                                                 </div>
@@ -106,7 +106,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="TipoClienteModalEditar" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal fade" id="ClienteModalEditar" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -119,11 +119,24 @@
                     <form class="form" id="kt_ClienteEditar">
                         <div class="card-body">
                             <input type="number" id="idClienteEditar" hidden />
+                            <input type="number" id="idPersonaEditar" hidden />
                             <div class="form-group">
-                                <label>Tipo de cliente:</label>
-                                <input type="text" class="form-control" placeholder="Nombre tipo de cliente" name="tipoClienteEditar" id="tipoCliente" />
-                                <label>Tipo de persona:</label>
-                                <input type="text" class="form-control" placeholder="Nombre persona" name="personaEditar" id="persona" />
+                                <label>Tipo de cliente</label>
+                                <div class="col">
+                                    <select class="form-control selectpicker" name="clienteEditar" id="clienteEditar">
+                                        @foreach (var oElemnto in @ViewBag.TipoCliente)
+                                        {
+                                            if (oElemnto.Estado == true)
+                                            {
+                                                <option value="@oElemnto.Id">@oElemnto.Tipo</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Persona:</label>
+                                <input type="text" class="form-control" placeholder="Persona" name="PersonaEditar" id="PersonaEditar" disabled="disabled" />
                             </div>
                             <label class="checkbox checkbox-outline checkbox-success checkbox-lg">
                                 <input type="checkbox" name="chkEstado" id="chkEstadoCliente" />
@@ -190,15 +203,12 @@
                         type: 'number',
                         selector: true,
                         textAlign: 'center',
-                    }, {
-                        field: 'PersonaId',
-                        title: 'PersonaId',
+                    },  {
+                        field: 'Nombre',
+                        title: 'Nombre',
                         }, {
-                        field: 'TipoClienteId',
-                        title: 'TipoClienteId',
-                        }, {
-                        field: 'PrimerNombre',
-                        title: 'PrimerNombre',
+                            field: 'TipoCliente',
+                            title: 'TipoCliente',
                         },{
                         field: 'Estado',
                         title: 'Estado',
@@ -224,7 +234,7 @@
                         autoHide: false,
                         template: function (row) {
                             return '\
-							<a href="javascript:;" class="btn btn-sm btn-clean btn-icon mr-2" title="Editar" onclick="verRegistroEditar('+ row.Id + ',\'' + row.PersonaId + ',\'' + row.TipoClienteId + '\',' + row.Estado+')">\
+							<a href="javascript:;" class="btn btn-sm btn-clean btn-icon mr-2" title="Editar" onclick="verRegistroEditar('+ row.Id +')">\
 	                            <span class="svg-icon svg-icon-md">\
 	                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
 	                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -281,10 +291,30 @@
                     KTUtil.getById('kt_Cliente'),
                     {
                         fields: {
-                            idTipoCliente: {
+                            kt_select2_6: {
                                 validators: {
                                     notEmpty: {
-                                        message: 'El nombre de tipo de persona es requerido'
+                                        message: 'Este campo es requerido'
+                                    }
+                                }
+                            },
+                        },
+                        plugins: {
+                            trigger: new FormValidation.plugins.Trigger(),
+                            submitButton: new FormValidation.plugins.SubmitButton(),
+                            bootstrap: new FormValidation.plugins.Bootstrap()
+                        }
+                    }
+                );
+                var validationEditar;
+                validationEditar = FormValidation.formValidation(
+                    KTUtil.getById('kt_ClienteEditar'),
+                    {
+                        fields: {
+                            kt_select2_6: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Este campo es requerido'
                                     }
                                 }
                             },
@@ -301,7 +331,6 @@
                     validation.validate().then(function (status) {
                         if (status == 'Valid') {
                             AddClient();
-                            console.log("ff");
                             Limpiar();
                             CerrarModal();
                         } else {
@@ -325,8 +354,13 @@
                     _handleClientForm();
                 }
             };
-        }();
-
+        };
+        $('#kt_Cliente_Editar').on('click', function (e) {
+            e.preventDefault();
+            editarRegistro();
+            $("#ClienteModalEditar").modal('toggle');
+               
+        });
         jQuery(document).ready(function () {
             KTClient.init();
         });
@@ -338,21 +372,21 @@
             if (repo.loading) return repo.text;
             var markup = "<div class='select2-result-repository clearfix'>" +
                 "<div class='select2-result-repository__meta'>" +
-                "<div class='select2-result-repository__title'>" + repo.Tipo + "</div>" +
+                "<div class='select2-result-repository__title'>" + repo.Nombre + "</div>" +
                 "</div></div>";
             return markup;
 
         }
 
         function formatRepoSelection(repo) {
-            return repo.Tipo || repo.text;
+            return repo.Nombre || repo.text;
         }
-        $(".js-data-example-ajax").select2({
+        $("#kt_select2_6").select2({
             cacheDataSource: [],
-            placeholder: "Search for git repositories",
+            placeholder: "Buscar",
             allowClear: true,
             ajax: {
-                url: 'https://localhost:44308//Client/GetListClientForSelect',
+                url: 'https://localhost:44308//Person/GetListPersonForSelect',
                 dataType: 'json',
                 delay: 250,
                 data: function (params) {
@@ -378,7 +412,7 @@
             minimumInputLength: 1,
             templateResult: formatRepo,
             templateSelection: function (repo) {
-                return repo.Tipo || repo.text;
+                return repo.Nombre || repo.text;
             },
             language: {
                 inputTooShort: function () {
@@ -388,15 +422,14 @@
 
         });
     </script>
+
     <script>
         function AddClient() {
             var TipoClienteId = $("#cliente").val();
-            var PersonaId = 2;
-            console.log(TipoClienteId);
+            var PersonaId = $("#kt_select2_6").val();
             var clienteDto = {
                 TipoClienteId: TipoClienteId,
-                PersonaId: PersonaId,
-                PrimerNombre:"Hola"
+                PersonaId: PersonaId
             };
             $.ajax({
                 type: 'POST',
@@ -439,6 +472,88 @@
             $("#kt_Cliente")[0].reset();
             reloadGrid();
         }
-
+        function verRegistroEditar(id) {
+            var url= '@Url.Action("GetClientePorId", "Client")?Id='+id;
+            $.get(url).done(function (data) {
+                //Se modifican los valores Cliente
+                $("#idClienteEditar").val(data.Id);
+                $("#idPersonaEditar").val(data.PersonaId);
+                $("#PersonaEditar").val(data.Nombre);
+                $("#clienteEditar").val(data.TipoClienteId).change();
+                $("#chkEstadoCliente").prop('checked', data.Estado);
+                $("#ClienteModalEditar").modal("show");
+            })
+        }
+        function editarRegistro() {
+            var ClienteDto = {
+                Id: $("#idClienteEditar").val(),
+                PersonaId: $("#idPersonaEditar").val(),
+                TipoClienteId: $("#clienteEditar").val(),
+                Estado: $('#chkEstadoCliente').prop('checked')
+            };
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("EditarCliente", "Client")',
+                dataType: 'json',
+                data: ClienteDto,
+                async:false,
+                success: function (data) {
+                    swal.fire({
+                        text: "se edito correctamente",
+                        icon: "success",
+                        buttonsStyling: false,
+                        confirmButtonText: "Entiendo!",
+                        customClass: {
+                            confirmButton: "btn font-weight-bold btn-light-primary"
+                        }
+                    }).then(function () {
+                        KTUtil.scrollTop();
+                        reloadGrid();
+                    });
+                },
+                error: function (ex) {
+                    swal.fire({
+                        text: "error al editar",
+                        icon: "error",
+                        buttonsStyling: false,
+                        confirmButtonText: "Entiendo!",
+                        customClass: {
+                            confirmButton: "btn font-weight-bold btn-light-primary"
+                        }
+                    }).then(function () {
+                        KTUtil.scrollTop();
+                    });
+                }
+            });
+        }
+         function eliminarRegistro(id) {
+            Swal.fire({
+                title: "Esta seguro que desea borrar?",
+                text: "Se desactivara el registro",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Eliminar",
+                cancelButtonText: "Cancelar"
+            }).then(function (result) {
+                if (result.value) {
+                    var jqXHR = $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("EliminarCliente", "Client")?Id='+id,
+                            dataType: 'json',
+                            async:false,
+                        success: function (data) {
+                            },
+                            error: function (ex) {
+                            }
+                    });
+                    jqXHR.responseJSON;
+                    Swal.fire(
+                        "Borrado!",
+                        "Se dejo inactivo el registro.",
+                        "Ok"
+                    ).then(function (result) { reloadGrid(); });
+                }
+            });
+        }
     </script>
 }

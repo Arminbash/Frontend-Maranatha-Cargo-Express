@@ -82,5 +82,32 @@ namespace MaranathaCargoExpress.Web.Controllers
             }
             return Json(request.Result, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetClientePorId(int Id)
+        {
+            var request = _clienteService.ObtenerCliente(Id, SessionHelper.GetToken());
+            if (request.Result == null)
+            {
+                return new BadRequest();
+            }
+            return Json(request.Result, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult EditarCliente(ClienteDto clienteDto)
+        {
+            var request = _clienteService.EditarCliente(clienteDto, SessionHelper.GetToken());
+            if (request.Result == null)
+            {
+                return new BadRequest();
+            }
+            return Json(request.Result, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult EliminarCliente(int Id)
+        {
+            var request = _clienteService.EliminarCliente(Id, SessionHelper.GetToken());
+            if (request.Result == null)
+            {
+                return new BadRequest();
+            }
+            return Json(request.Result, JsonRequestBehavior.AllowGet);
+        }
     }
 }

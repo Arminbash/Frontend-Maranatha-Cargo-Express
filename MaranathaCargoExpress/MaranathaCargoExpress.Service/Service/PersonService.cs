@@ -16,7 +16,7 @@ namespace MaranathaCargoExpress.Service.Service
             var request = await GenericMethodsAPIClient<List<PersonaDto>>.Get(ApiConnection.EndPoints.Persona + "ObtenerPersona", token);
             return request;
         }
-        public async Task<PersonaDto> AddTipoPersonaAsync(PersonaDto personaDto, string token)
+        public async Task<PersonaDto> AddPersonaAsync(PersonaDto personaDto, string token)
         {
             personaDto.Estado = true;
             var request = await GenericMethodsAPIClient<PersonaDto>.Post(ApiConnection.EndPoints.Persona + "CreatePersona", personaDto, token);
@@ -30,12 +30,12 @@ namespace MaranathaCargoExpress.Service.Service
 
         public async Task<PersonaDto> EditarPersona(PersonaDto personaDto, string token)
         {
-            var request = await GenericMethodsAPIClient<PersonaDto>.Put(ApiConnection.EndPoints.TipoPersona + "UpdatePersona", null, personaDto, token);
+            var request = await GenericMethodsAPIClient<PersonaDto>.Put(ApiConnection.EndPoints.Persona + "UpdatePersona", null, personaDto, token);
             return request;
         }
         public async Task<PersonaDto> EliminarPersona(int id, string token)
         {
-            var request = await GenericMethodsAPIClient<PersonaDto>.Get(ApiConnection.EndPoints.TipoPersona + "ObtenerPersona/" + id.ToString(), token);
+            var request = await GenericMethodsAPIClient<PersonaDto>.Get(ApiConnection.EndPoints.Persona + "ObtenerPersona/" + id.ToString(), token);
             request.Estado = false;
             return await EditarPersona(request, token);
         }

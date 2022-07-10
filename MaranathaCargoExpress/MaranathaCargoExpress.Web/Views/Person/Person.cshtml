@@ -36,12 +36,12 @@
                                     </button>
                                 </div>
                                 <div class="modal-body" id="KTPerson">
-                                    <form class="form" id="kt_Person">
+                                    <form class="form" id="kt_Persona">
                                         <div class="card-body">
                                             <div class="form-group row">
                                                 <div class="col-lg-6">
                                                     <label>Primer Nombre:</label>
-                                                    <input type="text" class="form-control" placeholder="Primer Nombre" name="PrimerNombre" id="primerNombre" />
+                                                    <input type="text" class="form-control" placeholder="Primer Nombre" name="primerNombre" id="primerNombre" />
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <label>Segundo Nombre:</label>
@@ -139,8 +139,8 @@
         </div>
     </div>
 
-    <div class="modal fade" id="personaModalEditar" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal fade" id="personaModalEditar" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeLg" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Editar persona</h5>
@@ -205,7 +205,7 @@
                             <div class="form-group row">
                                 <div class="col-lg-12">
                                     <label>Direccion:</label>
-                                    <textarea class="form-control form-control-solid" placeholder="Dirección" rows="3"></textarea>
+                                    <textarea class="form-control form-control-solid" placeholder="Dirección" rows="3" name="direccionEditar" id="direccionEditar"></textarea>
                                 </div>
                             </div>
                             <label class="checkbox checkbox-outline checkbox-success checkbox-lg">
@@ -270,7 +270,7 @@
                     },
 
                     columns: [{
-                        field: 'Id',
+                        field: 'id',
                         title: '#',
                         sortable: false,
                         width: 20,
@@ -305,7 +305,7 @@
                         autoHide: false,
                         template: function (row) {
                             return '\
-							<a href="javascript:;" class="btn btn-sm btn-clean btn-icon mr-2" title="Editar" onclick="verRegistroEditar('+ row.Id + ',\'' + row.Tipo + '\',' + row.Estado+')">\
+							<a href="javascript:;" class="btn btn-sm btn-clean btn-icon mr-2" title="Editar" onclick="verRegistroEditar('+ row.id + ',\'' + row.TipoPersona + '\',' + row.Estado+')">\
 	                            <span class="svg-icon svg-icon-md">\
 	                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
 	                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -316,7 +316,7 @@
 	                                </svg>\
 	                            </span>\
 							</a>\
-							<a href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Eliminar" onclick="eliminarRegistro('+ row.Id +')">\
+							<a href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Eliminar" onclick="eliminarRegistro('+ row.id +')">\
 	                            <span class="svg-icon svg-icon-md">\
 	                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
 	                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -376,10 +376,10 @@
             var _handlePersonForm = function () {
                 var validation;
                 validation = FormValidation.formValidation(
-                    KTUtil.getById('kt_Person'),
+                    KTUtil.getById('kt_Persona'),
                     {
                         fields: {
-                            PrimerNombre: {
+                            primerNombre: {
                                 validators: {
                                     notEmpty: {
                                         message: 'El primer nombre es requerido'
@@ -470,7 +470,7 @@
                                     }
                                 }
                             },
-                            cedulaEditar: {
+                            CedulaEditar: {
                                 validators: {
                                     notEmpty: {
                                         message: 'La cedula es requerido'
@@ -491,6 +491,7 @@
                         if (status == 'Valid') {
                             AddPersona();
                             Limpiar();
+                            $("#personaModal").modal('toggle');
                             CerrarModal();
                         } else {
                             swal.fire({
@@ -606,23 +607,43 @@
             $("#kt_Persona")[0].reset();
             reloadGrid();
         }
-        @*function verRegistroEditar(id, tipo, estado) {
-            $("#idTipoPersonaEditar").val(id);
-            $("#tipoPersonaEditar").val(tipo);
-            $("#chkEstadoTipoPersona").prop('checked',estado);
-            $("#TipoPersonaModalEditar").modal("show");
+        function verRegistroEditar(id, tipoPersonaId, estado) {
+            var url= '@Url.Action("GetPersonaPorId", "Person")?Id='+id;
+            $.get(url).done(function (data) {
+                //Se modifican los valores persona
+                $("#idPersonaEditar").val(data.Id);
+                $("#primerNombreEditar").val(data.PrimerNombre);
+                $("#segundoNombreEditar").val(data.SegundoNombre);
+                $("#primerApellidoEditar").val(data.PrimerApellido);
+                $("#segundoApellidoEditar").val(data.SegundoApellido);
+                $("#correoEditar").val(data.Correo);
+                $("#CedulaEditar").val(data.Cedula);
+                $("#telefonoEditar").val(data.Telefono);
+                $("#direccionEditar").val(data.Direccion);
+                $("#typePersonEditar").val(data.TipoPersonaId).change();
+                $("#chkEstadoPersona").prop('checked', estado);
+                $("#personaModalEditar").modal("show");
+            })
         }
         function editarRegistro() {
-            var tipoPersonaDto = {
-                Id : $("#idTipoPersonaEditar").val(),
-                Tipo :$("#tipoPersonaEditar").val(),
-                Estado: $('#chkEstadoTipoPersona').prop('checked')
+            var PersonaDto = {
+                Id: $("#idPersonaEditar").val(),
+                primerNombre: $("#primerNombreEditar").val(),
+                segundoNombre: $("#segundoNombreEditar").val(),
+                primerApellido: $("#primerApellidoEditar").val(),
+                segundoApellido: $("#segundoApellidoEditar").val(),
+                correo: $("#correoEditar").val(),
+                cedula: $("#CedulaEditar").val(),
+                telefono: $("#telefonoEditar").val(),
+                direccion: $("#direccionEditar").val(),
+                TipoPersonaId: $("#typePersonEditar").val(),
+                Estado: $('#chkEstadoPersona').prop('checked')
             };
             $.ajax({
                 type: 'POST',
-                url: '@Url.Action("EditarTipoPersona", "TypePerson")',
+                url: '@Url.Action("EditarPersona", "Person")',
                 dataType: 'json',
-                data: tipoPersonaDto,
+                data: PersonaDto,
                 async:false,
                 success: function (data) {
                     swal.fire({
@@ -665,7 +686,7 @@
                 if (result.value) {
                     var jqXHR = $.ajax({
                             type: 'POST',
-                            url: '@Url.Action("EliminarTipoPersona", "TypePerson")?Id='+id,
+                            url: '@Url.Action("EliminarPersona", "Person")?Id='+id,
                             dataType: 'json',
                             async:false,
                         success: function (data) {
@@ -681,6 +702,6 @@
                     ).then(function (result) { reloadGrid(); });
                 }
             });
-        }*@
+        }
     </script>
 }

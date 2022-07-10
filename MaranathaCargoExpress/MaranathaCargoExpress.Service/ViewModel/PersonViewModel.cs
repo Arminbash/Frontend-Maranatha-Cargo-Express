@@ -11,10 +11,11 @@ namespace MaranathaCargoExpress.Service.ViewModel
         /// <summary>
         /// Primary key
         /// </summary>
-        public int Id { get; set; }
+        public int id { get; set; }
         /// <summary>
         /// Primer Nombre
         /// </summary>
+       // public int id { get { return Id; }}
         public string Nombre { get; set; }
         /// <summary>
         /// Correo

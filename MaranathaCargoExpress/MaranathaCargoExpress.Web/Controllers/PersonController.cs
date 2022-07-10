@@ -37,7 +37,7 @@ namespace MaranathaCargoExpress.Web.Controllers
         [HttpPost]
         public JsonResult AddPersona(PersonaDto personaDto)
         {
-            var request = _personaService.AddTipoPersonaAsync(personaDto, SessionHelper.GetToken());
+            var request = _personaService.AddPersonaAsync(personaDto, SessionHelper.GetToken());
             if (request.Result == null)
             {
                 return new BadRequest();
@@ -66,9 +66,20 @@ namespace MaranathaCargoExpress.Web.Controllers
             return Json(request.Result, JsonRequestBehavior.AllowGet);
         }
 
+       
+        public JsonResult GetPersonaPorId(int Id)
+        {
+            var request = _personaService.ObtenerPersona(Id, SessionHelper.GetToken());
+            if (request.Result == null)
+            {
+                return new BadRequest();
+            }
+            return Json(request.Result, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         public JsonResult EditarPersona(PersonaDto personaDto)
-        {
+         {
             var request = _personaService.EditarPersona(personaDto, SessionHelper.GetToken());
             if (request.Result == null)
             {
@@ -90,6 +101,26 @@ namespace MaranathaCargoExpress.Web.Controllers
                 return new BadRequest();
             }
             return Json(request.Result, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetListPersonForSelect(string q, int? page = null)
+        {
+            PaginationDto pagination = new PaginationDto();
+            pagination.generalSearch = q;
+            pagination.Estado = true;
+            pagination.page = page is null ? 1 : (int)page;
+            pagination.pages = 0;
+            pagination.perpage = 30;
+            var request = _personaService.ListPersonPagination(pagination, SessionHelper.GetToken());
+            if (request.Result == null)
+            {
+                return new BadRequest();
+            }
+            LoadDataSelectDto<PersonViewModel> newRequest = new Service.ViewModel.Base.LoadDataSelectDto<PersonViewModel>();
+            newRequest.incomplete_results = true;
+            newRequest.items = request.Result.data;
+            newRequest.total_count = request.Result.meta.total;
+
+            return Json(newRequest, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -6,21 +6,28 @@ using System.Threading.Tasks;
 
 namespace MaranathaCargoExpress.Service.ViewModel
 {
-    public class TipoClienteDto
+   public class ClientViewModel
     {
         /// <summary>
-        /// Id
+        /// Primary key
         /// </summary>
         public int Id { get; set; }
         /// <summary>
-        /// Tipo de Cliente
+        /// clave forena de persona
         /// </summary>
-        public string Tipo { get; set; }
+        public int PersonaId { get; set; }
+        /// <summary>
+        /// nombre de persona
+        /// </summary>
+        public string Nombre { get; set; }
         /// <summary>
         /// Tipo de Cliente
         /// </summary>
-       // public int id { get { return Id;} }
-
+        public string TipoCliente { get; set; }
+        /// <summary>
+        /// Tipo de Cliente
+        /// </summary>
+        public int TipoClienteId { get; set; }
         /// <summary>
         /// Estado
         /// </summary>

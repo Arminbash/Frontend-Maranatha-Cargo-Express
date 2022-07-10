@@ -530,8 +530,9 @@
     <Content Include="assets\Logos\3.png" />
     <Content Include="assets\Logos\4.png" />
     <Content Include="assets\Logos\5.png" />
+    <Content Include="assets\Logos\LOGO.png" />
+    <Content Include="assets\Logos\LOGO2.png" />
     <Content Include="assets\Logos\mapa.png" />
-    <Content Include="assets\Logos\trazabilidad-enviosjpg.jpg" />
     <Content Include="assets\media\bg\300.jpg" />
     <Content Include="assets\media\bg\350.jpg" />
     <Content Include="assets\media\bg\400.jpg" />

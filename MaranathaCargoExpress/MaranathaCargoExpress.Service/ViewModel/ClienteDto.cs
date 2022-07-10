@@ -16,7 +16,6 @@ namespace MaranathaCargoExpress.Service.ViewModel
         /// clave forena de persona
         /// </summary>
         public int PersonaId { get; set; }
-        public string PrimerNombre { get; set; }
         /// <summary>
         /// Tipo de Cliente
         /// </summary>

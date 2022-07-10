@@ -130,6 +130,7 @@
     <Compile Include="ViewModel\Base\PaginationRequestBase.cs" />
     <Compile Include="Service\TypeClientService.cs" />
     <Compile Include="ViewModel\ClienteDto.cs" />
+    <Compile Include="ViewModel\ClientViewModel.cs" />
     <Compile Include="ViewModel\EmpleadoDto.cs" />
     <Compile Include="ViewModel\LoginDto.cs" />
     <Compile Include="ViewModel\PersonaDto.cs" />
